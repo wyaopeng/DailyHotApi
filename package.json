@@ -1,6 +1,6 @@
 {
-  "name": "@wyaopeng/dailyhot-api",
-  "version": "2.0.9",
+  "name": "@wdapeng/dailyhot-api",
+  "version": "2.0.10",
   "description": "An Api on Today's Hot list - Fork with fixes",
   "keywords": [
     "API",
