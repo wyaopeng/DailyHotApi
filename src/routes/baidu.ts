@@ -53,15 +53,15 @@ const getList = async (options: Options, noCache: boolean): Promise<RouterResTyp
   return {
     ...result,
     data: content.map((v: any, index: number) => ({
-      id: v.index || index,
+      id: v.index !== undefined ? v.index : index,
       title: v.word || "",
-      desc: v.desc || "",
-      cover: v.img || "",
-      author: v.show?.length ? v.show : "",
+      desc: "",
+      cover: "",
+      author: "",
       timestamp: 0,
-      hot: Number(v.hotScore || 0),
+      hot: 0,
       url: v.url || `https://www.baidu.com/s?wd=${encodeURIComponent(v.word || "")}`,
-      mobileUrl: v.url || v.rawUrl || `https://www.baidu.com/s?wd=${encodeURIComponent(v.word || "")}`,
+      mobileUrl: v.url || `https://www.baidu.com/s?wd=${encodeURIComponent(v.word || "")}`,
     })),
   };
 };
