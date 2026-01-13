@@ -45,19 +45,23 @@ const getList = async (options: Options, noCache: boolean): Promise<RouterResTyp
   // 正则查找
   const pattern = /<!--s-data:(.*?)-->/s;
   const matchResult = result.data.match(pattern);
-  const jsonObject = JSON.parse(matchResult[1]).cards[0].content;
+  if (!matchResult || !matchResult[1]) {
+    throw new Error("Failed to parse Baidu data");
+  }
+  const jsonData = JSON.parse(matchResult[1]);
+  const content = jsonData.cards?.[0]?.content?.[0]?.content || [];
   return {
     ...result,
-    data: jsonObject.map((v: RouterType["baidu"]) => ({
-      id: v.index,
-      title: v.word,
-      desc: v.desc,
-      cover: v.img,
+    data: content.map((v: any, index: number) => ({
+      id: v.index || index,
+      title: v.word || "",
+      desc: v.desc || "",
+      cover: v.img || "",
       author: v.show?.length ? v.show : "",
       timestamp: 0,
       hot: Number(v.hotScore || 0),
-      url: `https://www.baidu.com/s?wd=${encodeURIComponent(v.query)}`,
-      mobileUrl: v.rawUrl,
+      url: v.url || `https://www.baidu.com/s?wd=${encodeURIComponent(v.word || "")}`,
+      mobileUrl: v.url || v.rawUrl || `https://www.baidu.com/s?wd=${encodeURIComponent(v.word || "")}`,
     })),
   };
 };
