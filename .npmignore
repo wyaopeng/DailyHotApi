@@ -1,2 +1,52 @@
-node_modules
-dist/logs/
+# 源代码
+src/
+*.ts
+!*.d.ts
+
+# 配置文件
+.env
+.env.*
+tsconfig.json
+.prettierrc
+.prettierignore
+.eslintrc.js
+.eslintignore
+
+# 开发工具
+.vscode/
+.idea/
+.claude/
+
+# 测试和文档
+test/
+tests/
+*.test.js
+*.spec.js
+
+# 日志
+logs/
+*.log
+npm-debug.log*
+
+# 临时文件
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+nul
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# 其他
+node_modules/
+coverage/
+.nyc_output/

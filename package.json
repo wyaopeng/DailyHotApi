@@ -1,21 +1,23 @@
 {
-  "name": "dailyhot-api",
-  "version": "2.0.8",
-  "description": "An Api on Today's Hot list",
+  "name": "@wyaopeng/dailyhot-api",
+  "version": "2.0.9",
+  "description": "An Api on Today's Hot list - Fork with fixes",
   "keywords": [
     "API",
-    "RSS"
+    "RSS",
+    "hot",
+    "news"
   ],
-  "homepage": "https://github.com/imsyy/DailyHotApi#readme",
+  "homepage": "https://github.com/wyaopeng/DailyHotApi#readme",
   "bugs": {
-    "url": "https://github.com/imsyy/DailyHotApi/issues"
+    "url": "https://github.com/wyaopeng/DailyHotApi/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/imsyy/DailyHotApi.git"
+    "url": "git+https://github.com/wyaopeng/DailyHotApi.git"
   },
   "license": "MIT",
-  "author": "imsyy",
+  "author": "wyaopeng",
   "main": "dist/index.js",
   "declaration": true,
   "declarationMap": true,
@@ -32,7 +34,9 @@
     "dev": "cross-env NODE_ENV=development tsx watch --no-cache src/index.ts",
     "dev:cache": "cross-env NODE_ENV=development tsx watch src/index.ts",
     "build": "tsc --project tsconfig.json",
-    "start": "cross-env NODE_ENV=development node dist/index.js"
+    "start": "cross-env NODE_ENV=development node dist/index.js",
+    "prepublishOnly": "npm run build",
+    "release": "npm run build && npm publish --access public"
   },
   "type": "module",
   "dependencies": {
